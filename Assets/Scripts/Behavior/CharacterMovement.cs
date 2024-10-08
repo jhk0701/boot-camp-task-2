@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -11,7 +8,8 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private Animator anim;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 30f;
+
 
     void Awake()
     {
@@ -24,11 +22,12 @@ public class CharacterMovement : MonoBehaviour
         controller.OnMoveEvent += Move;
     }
     
+    
     void Move(Vector2 dir)
     {
-        int val = (int)(dir - Vector2.zero).magnitude;
-        
-        anim.SetBool(isMove, Convert.ToBoolean(val));
+        int val = (int)dir.magnitude;
+
+        anim.SetBool(isMove, val == 1);
 
         rb.velocity = dir * speed * Time.deltaTime * 100f;
     }
