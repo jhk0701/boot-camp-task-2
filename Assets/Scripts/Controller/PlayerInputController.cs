@@ -12,6 +12,6 @@ public class PlayerInputController : InputController
 
     public void OnLook(InputValue value)
     {
-
+        
     }
 }

@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    InputController controller;
-    Rigidbody2D rb;
-    [SerializeField] Animator anim;
-    [SerializeField] float speed = 10f;
+    private readonly int isMove = Animator.StringToHash("isMove");
+
+    private InputController controller;
+    private Rigidbody2D rb;
+
+    [SerializeField] private Animator anim;
+    [SerializeField] private float speed = 10f;
 
     void Awake()
     {
@@ -25,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
     {
         int val = (int)(dir - Vector2.zero).magnitude;
         
-        anim.SetBool("IsMove", Convert.ToBoolean(val));
+        anim.SetBool(isMove, Convert.ToBoolean(val));
 
         rb.velocity = dir * speed * Time.deltaTime * 100f;
     }
