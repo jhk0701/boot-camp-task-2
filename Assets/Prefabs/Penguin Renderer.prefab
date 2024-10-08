@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3266939519561229113}
   - component: {fileID: 5879254834281365865}
   m_Layer: 0
-  m_Name: Renderer Penguin
+  m_Name: Penguin Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
