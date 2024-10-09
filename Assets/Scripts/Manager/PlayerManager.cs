@@ -1,73 +1,37 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
-public enum CharacterType 
-{
-    Penguin,
-}
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] GameObject prefPlayer;
     public Transform Player { get; private set; }
-    GameObject currentRenderer;
-    
-    [Header("Character Info")]
-    // TODO : 캐릭터 관련 정보 분리하기
-    public CharacterType currentCharacterType;
-    public GameObject[] characters;
+    public GameObject PlayerCharacter { get; private set; }
 
-    [Header("Player Info")]
-    [SerializeField] Transform playerCanvas;
-    [SerializeField] TextMeshProUGUI txtPlayerName;
     string playerName;
 
-    // TODO : 입력만 받는 클래스로 책임 분리
-    [Header("Player Name Input")]
-    [SerializeField] GameObject panelPlayerName;
+    [Header("Player UI")]
+    [SerializeField] Transform playerCanvas;
+    [SerializeField] TextMeshProUGUI txtPlayerName;
 
-    void Start()
+    public void Initialize()
     {
-        OpenPlayerNameInput();
-
         Player = Instantiate(prefPlayer).transform;
-
-        CreatePlayerCharacter();
         
         Camera.main.transform.SetParent(Player);
         playerCanvas.SetParent(Player);
     }
 
-    public void CreatePlayerCharacter(CharacterType type = CharacterType.Penguin)
+    public void UpdatePlayer(string newName, CharacterType type)
     {
-        currentCharacterType = type;
-        currentRenderer = Instantiate(characters[(int)type], Player.transform);
+        txtPlayerName.text = playerName = newName;
 
-        AnimationController pAnim = Player.GetComponent<AnimationController>();
-        pAnim.AssignAnimator(currentRenderer.GetComponent<Animator>());
-    }
+        if (PlayerCharacter != null)
+            Destroy(PlayerCharacter);
 
-
-    public void OpenPlayerNameInput()
-    {
-        panelPlayerName.SetActive(true);
-    }
-
-    public void OnValueChangedPlayerName(string name)
-    {
-        // TODO : 정규식 적용
-        playerName = name;
-    }
-
-    public void CheckPlayerName()
-    {
-        if(playerName.Length == 0)
-            return;
-
-        panelPlayerName.SetActive(false);
-
-        txtPlayerName.text = playerName;
+        PlayerCharacter = GameManager.Instance.CharacterSelection.CreateCharacter(type, Player);
+        
+        AnimationController animCtrl = Player.GetComponent<AnimationController>();
+        animCtrl.AssignAnimator(PlayerCharacter.GetComponent<Animator>());
     }
 }

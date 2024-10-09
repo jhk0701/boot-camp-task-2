@@ -19,8 +19,11 @@ public class AnimationController : MonoBehaviour
         controller.OnMoveEvent += Move;
     }
     
+    
     void Move(Vector2 dir)
     {
+        if(anim == null) return;
+
         int val = (int)dir.magnitude;
         anim.SetBool(isMove, val == 1);
     }
