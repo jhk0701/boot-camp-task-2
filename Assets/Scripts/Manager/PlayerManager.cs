@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     GameObject currentRenderer;
     
     [Header("Character Info")]
-    // TODO : Ä³¸¯ÅÍ °ü·Ã Á¤º¸ ºĞ¸®ÇÏ±â
+    // TODO : ìºë¦­í„° ê´€ë ¨ ì •ë³´ ë¶„ë¦¬í•˜ê¸°
     public CharacterType currentCharacterType;
     public GameObject[] characters;
 
@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtPlayerName;
     string playerName;
 
-    // TODO : ÀÔ·Â¸¸ ¹Ş´Â Å¬·¡½º·Î Ã¥ÀÓ ºĞ¸®
+    // TODO : ì…ë ¥ë§Œ ë°›ëŠ” í´ë˜ìŠ¤ë¡œ ì±…ì„ ë¶„ë¦¬
     [Header("Player Name Input")]
     [SerializeField] GameObject panelPlayerName;
 
@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
 
     public void OnValueChangedPlayerName(string name)
     {
-        // TODO : Á¤±Ô½Ä Àû¿ë
+        // TODO : ì •ê·œì‹ ì ìš©
         playerName = name;
     }
 
