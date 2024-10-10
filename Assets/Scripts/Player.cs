@@ -6,6 +6,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
+    // TODO : 시간되면 이것도 분리
     [Header("Player Stat")]
     public float speed = 30f;
 
@@ -18,6 +19,10 @@ public class Player : MonoBehaviour
     public event Action<string> onNameChanged;
     public event Action<GameObject> onCharacterChanged;
 
+    void Start()
+    {
+        MainManager.Instance.PlayerManager.players.Add(this);    
+    }
     
     public void UpdateName(string newName)
     {
@@ -32,11 +37,6 @@ public class Player : MonoBehaviour
             Destroy(Character);
 
         Character = MainManager.Instance.CharacterSelection.CreateCharacter(type, transform);
-        
-        AnimationController animCtrl = GetComponent<AnimationController>();
-        animCtrl.AssignAnimator(Character.GetComponent<Animator>());
-
-        Debug.Log("UpdateCharacter");
 
         onCharacterChanged?.Invoke(Character);
     }

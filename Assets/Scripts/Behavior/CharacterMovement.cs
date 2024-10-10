@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -18,7 +17,7 @@ public class CharacterMovement : MonoBehaviour
 
         controller.OnMoveEvent += Move;
         controller.OnLookEvent += Look;
-        player.onCharacterChanged += ChangeCharacter;
+        player.onCharacterChanged += ChangeSprite;
     }
 
 
@@ -34,7 +33,7 @@ public class CharacterMovement : MonoBehaviour
         characterSprite.flipX = Mathf.Abs(rot) > 90;
     }
 
-    void ChangeCharacter(GameObject newChar)
+    void ChangeSprite(GameObject newChar)
     {
         characterSprite = newChar.GetComponentInChildren<SpriteRenderer>();
     }

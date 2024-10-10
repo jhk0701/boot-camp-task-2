@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    const int MAX_PLAYER_COUNT = 16;
+    public const int MAX_PLAYER_COUNT = 16;
 
     [SerializeField] Player prefPlayer;
     
@@ -17,5 +17,5 @@ public class PlayerManager : MonoBehaviour
         
         Camera.main.transform.SetParent(Player.transform);
     }
-
+    
 }

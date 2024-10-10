@@ -12,7 +12,7 @@ public class MainManager : MonoBehaviour
     public SceneLoader SceneLoader { get; private set; }
     public CharacterSelection CharacterSelection { get; private set; }
     
-    // 각 세부 기능에 대한 맵
+    // 각 페이지에 대한 매핑
     // 이름 - 해당 맵
     public Dictionary<int, IPage> pages = new Dictionary<int, IPage>();
 
