@@ -22,9 +22,10 @@ public class PlayerManager : MonoBehaviour
         playerCanvas.SetParent(Player);
     }
 
-    public void UpdatePlayer(string newName, CharacterType type)
+    public void UpdatePlayer(CharacterType type, string newName = "")
     {
-        txtPlayerName.text = playerName = newName;
+        if(newName.Length > 0)
+            txtPlayerName.text = playerName = newName;
 
         if (PlayerCharacter != null)
             Destroy(PlayerCharacter);
