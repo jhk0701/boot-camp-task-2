@@ -15,7 +15,7 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
     [Header("Prefab")]
     [SerializeField] Button prefCharacterCard;
 
-    public Action<CharacterType> onCharacterChanged;
+    public event Action<CharacterType> onCharacterChanged;
 
 
     void Start()
@@ -32,7 +32,7 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
             if(MainManager.Instance.PlayerManager.Player == null)
                 return;
                 
-            MainManager.Instance.PlayerManager.UpdatePlayerCharacter(type);
+            MainManager.Instance.PlayerManager.Player.UpdateCharacter(type);
         };
     }
 
@@ -45,7 +45,7 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
     {
         characterList.gameObject.SetActive(false);
     }
-    
+
 
     public void OnClickCharacterCard(CharacterType type)
     {

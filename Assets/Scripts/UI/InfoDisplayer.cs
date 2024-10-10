@@ -5,7 +5,7 @@ using UnityEngine;
 public class InfoDisplayer : MonoBehaviour
 {
     [SerializeField] TMP_Text txtTime;
-    [SerializeField] TMP_Text txtMap;
+    // [SerializeField] TMP_Text txtMap;
 
     private void Start() 
     {

@@ -12,13 +12,9 @@ public class AnimationController : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<InputController>();
-    }
-
-    void Start()
-    {
+        
         controller.OnMoveEvent += Move;
     }
-    
     
     void Move(Vector2 dir)
     {

@@ -4,38 +4,18 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] GameObject prefPlayer;
+    const int MAX_PLAYER_COUNT = 16;
 
-    public Transform Player { get; private set; }
-    public GameObject PlayerCharacter { get; private set; }
-    public string PlayerName {get; private set; }
-
-    [Header("Player UI")]
-    [SerializeField] Transform playerCanvas;
-    [SerializeField] TextMeshProUGUI txtPlayerName;
+    [SerializeField] Player prefPlayer;
+    
+    public Player Player { get; private set; }
+    public List<Player> players = new List<Player>();
 
     public void Initialize()
     {
-        Player = Instantiate(prefPlayer).transform;
+        Player = Instantiate(prefPlayer);
         
-        Camera.main.transform.SetParent(Player);
-        playerCanvas.SetParent(Player);
+        Camera.main.transform.SetParent(Player.transform);
     }
 
-    public void UpdatePlayerName(string newName)
-    {
-        txtPlayerName.text = PlayerName = newName;
-        // 변경
-    }
-
-    public void UpdatePlayerCharacter(CharacterType type)
-    {
-        if (PlayerCharacter != null)
-            Destroy(PlayerCharacter);
-
-        PlayerCharacter = MainManager.Instance.CharacterSelection.CreateCharacter(type, Player);
-        
-        AnimationController animCtrl = Player.GetComponent<AnimationController>();
-        animCtrl.AssignAnimator(PlayerCharacter.GetComponent<Animator>());
-    }
 }

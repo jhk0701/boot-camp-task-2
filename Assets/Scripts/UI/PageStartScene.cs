@@ -26,12 +26,12 @@ public class PageStartScene : MonoBehaviour, IPage
 
     void Start()
     {
-        StartManager.Instance.pages.Add(Hash, this);
-
         PlayerCharacter.onCharacterChanged += (CharacterType type) => 
         {
             characterPreview.sprite = MainManager.Instance.CharacterSelection.Map[type].sprite;
         };
+
+        Open();
     }
 
     public void Open()
@@ -57,8 +57,9 @@ public class PageStartScene : MonoBehaviour, IPage
             () => 
             {
                 MainManager.Instance.PlayerManager.Initialize(); 
-                MainManager.Instance.PlayerManager.UpdatePlayerName(PlayerName.Name);
-                MainManager.Instance.PlayerManager.UpdatePlayerCharacter(PlayerCharacter.CurrentCharacterType);
+                
+                MainManager.Instance.PlayerManager.Player.UpdateName(PlayerName.Name);
+                MainManager.Instance.PlayerManager.Player.UpdateCharacter(PlayerCharacter.CurrentCharacterType);
             }
         );
 

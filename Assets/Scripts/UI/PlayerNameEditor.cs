@@ -16,7 +16,11 @@ public class PlayerNameEditor : MonoBehaviour, IPopUpable
     public void PopUp()
     {
         panel.gameObject.SetActive(true);
-        inputFieldPlayerName.text = Name = MainManager.Instance.PlayerManager.PlayerName;
+        
+        if(MainManager.Instance.PlayerManager.Player == null)
+            inputFieldPlayerName.text = Name = "";
+        else
+            inputFieldPlayerName.text = Name = MainManager.Instance.PlayerManager.Player.PlayerName;
     }
 
     public void Close()
@@ -24,7 +28,7 @@ public class PlayerNameEditor : MonoBehaviour, IPopUpable
         if(!IsVaildName(Name))
             return;
 
-        MainManager.Instance.PlayerManager.UpdatePlayerName(Name);
+        MainManager.Instance.PlayerManager.Player.UpdateName(Name);
         panel.gameObject.SetActive(false);
     }
 
