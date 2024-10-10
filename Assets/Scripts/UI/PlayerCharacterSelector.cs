@@ -15,7 +15,8 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
     [Header("Prefab")]
     [SerializeField] Button prefCharacterCard;
 
-    public Action onCharacterChanged;
+    public Action<CharacterType> onCharacterChanged;
+
 
     void Start()
     {
@@ -25,19 +26,33 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
             btn.transform.GetChild(0).GetComponent<Image>().sprite = data.sprite;
             btn.onClick.AddListener(()=>{ OnClickCharacterCard(data.type); });
         }
+
+        onCharacterChanged += (CharacterType type) => 
+        {
+            if(MainManager.Instance.PlayerManager.Player == null)
+                return;
+                
+            MainManager.Instance.PlayerManager.UpdatePlayerCharacter(type);
+        };
     }
 
     public void PopUp()
     {
         characterList.gameObject.SetActive(true);
     }
+    
+    public void Close()
+    {
+        characterList.gameObject.SetActive(false);
+    }
+    
 
     public void OnClickCharacterCard(CharacterType type)
     {
-        characterList.gameObject.SetActive(false);
-        
         CurrentCharacterType = type;
 
-        onCharacterChanged?.Invoke();
+        onCharacterChanged?.Invoke(type);
+
+        Close();
     }
 }

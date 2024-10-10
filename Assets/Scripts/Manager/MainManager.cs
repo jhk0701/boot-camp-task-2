@@ -10,7 +10,7 @@ public class MainManager : MonoBehaviour
 
     public PlayerManager PlayerManager { get; private set;}
     public SceneLoader SceneLoader { get; private set; }
-    public CharacterSelection CharacterSelection {get; private set; }
+    public CharacterSelection CharacterSelection { get; private set; }
     
     // 각 세부 기능에 대한 맵
     // 이름 - 해당 맵

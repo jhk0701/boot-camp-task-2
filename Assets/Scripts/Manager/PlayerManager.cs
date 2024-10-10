@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] GameObject prefPlayer;
+
     public Transform Player { get; private set; }
     public GameObject PlayerCharacter { get; private set; }
-
-    string playerName;
+    public string PlayerName {get; private set; }
 
     [Header("Player UI")]
     [SerializeField] Transform playerCanvas;
@@ -22,11 +22,14 @@ public class PlayerManager : MonoBehaviour
         playerCanvas.SetParent(Player);
     }
 
-    public void UpdatePlayer(CharacterType type, string newName = "")
+    public void UpdatePlayerName(string newName)
     {
-        if(newName.Length > 0)
-            txtPlayerName.text = playerName = newName;
+        txtPlayerName.text = PlayerName = newName;
+        // 변경
+    }
 
+    public void UpdatePlayerCharacter(CharacterType type)
+    {
         if (PlayerCharacter != null)
             Destroy(PlayerCharacter);
 

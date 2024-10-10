@@ -1,36 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using TMPro;
-using Unity.VisualScripting;
 
 public class PlayerNameEditor : MonoBehaviour, IPopUpable
 {
     public string Name {get; private set;}
     string playerNameExpression = @"^[가-힣a-zA-Z0-9]{2,10}$";
 
+    [SerializeField] Transform panel;
     [SerializeField] TMP_InputField inputFieldPlayerName;
     [SerializeField] GameObject playerNameMatched;
     
-    void OnEnable()
-    {
-        inputFieldPlayerName.text = Name;
-    }
-
     public void PopUp()
     {
+        panel.gameObject.SetActive(true);
+        inputFieldPlayerName.text = Name = MainManager.Instance.PlayerManager.PlayerName;
+    }
 
+    public void Close()
+    {
+        if(!IsVaildName(Name))
+            return;
+
+        MainManager.Instance.PlayerManager.UpdatePlayerName(Name);
+        panel.gameObject.SetActive(false);
     }
 
     public void OnPlayerNameChanged(string name)
     {
         Name = name;
-        playerNameMatched.SetActive(!IsVaildPlayerName(name));
+        playerNameMatched.SetActive(!IsVaildName(name));
     }
 
-    public bool IsVaildPlayerName(string name)
+    public bool IsVaildName(string name)
     {
         // TODO : 비속어 체크
         return Regex.IsMatch(name, playerNameExpression);
