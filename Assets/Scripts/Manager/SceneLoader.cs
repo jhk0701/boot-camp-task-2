@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public const int START_SCENE = 0;
-    public const int GAME_SCENE = 1;
+    public const int SCENE_START = 0;
+    public const int SCENE_GAME = 1;
 
     /// <summary>
     /// 씬 로드 함수

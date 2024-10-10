@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         if (PlayerCharacter != null)
             Destroy(PlayerCharacter);
 
-        PlayerCharacter = GameManager.Instance.CharacterSelection.CreateCharacter(type, Player);
+        PlayerCharacter = MainManager.Instance.CharacterSelection.CreateCharacter(type, Player);
         
         AnimationController animCtrl = Player.GetComponent<AnimationController>();
         animCtrl.AssignAnimator(PlayerCharacter.GetComponent<Animator>());
