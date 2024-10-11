@@ -10,6 +10,7 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
     CharacterSelection characterSelect => MainManager.Instance.CharacterSelection;
     
     public CharacterType CurrentCharacterType = CharacterType.Penguin;
+    [SerializeField] GameObject panel;
     [SerializeField] Transform characterList;
 
     [Header("Prefab")]
@@ -38,12 +39,12 @@ public class PlayerCharacterSelector : MonoBehaviour, IPopUpable
 
     public void PopUp()
     {
-        characterList.gameObject.SetActive(true);
+        panel.gameObject.SetActive(true);
     }
     
     public void Close()
     {
-        characterList.gameObject.SetActive(false);
+        panel.gameObject.SetActive(false);
     }
 
 
