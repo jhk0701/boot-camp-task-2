@@ -338,7 +338,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1193968464}
+      - m_Target: {fileID: 1728026005}
         m_TargetAssemblyTypeName: PlayerNameEditor, Assembly-CSharp
         m_MethodName: OnPlayerNameChanged
         m_Mode: 0
@@ -1071,8 +1071,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1193968463}
-        m_TargetAssemblyTypeName: PagePlayerInfo, Assembly-CSharp
+      - m_Target: {fileID: 1728026003}
+        m_TargetAssemblyTypeName: StartScene, Assembly-CSharp
         m_MethodName: OnClickJoin
         m_Mode: 1
         m_Arguments:
@@ -1330,7 +1330,7 @@ PrefabInstance:
     - target: {fileID: 4607226913724488102, guid: e1a33393b5f59be4ba040eecd6efd5d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1193968465}
+      objectReference: {fileID: 1728026004}
     - target: {fileID: 4607226913724488102, guid: e1a33393b5f59be4ba040eecd6efd5d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1536,11 +1536,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193968462}
-  - component: {fileID: 1193968463}
-  - component: {fileID: 1193968464}
-  - component: {fileID: 1193968465}
   m_Layer: 5
-  m_Name: Page Player Creator
+  m_Name: Player Creator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1567,50 +1564,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1193968463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193968461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b521be72aac39a244af6603ad4c20359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 1176040423}
-  characterPreview: {fileID: 351502912}
---- !u!114 &1193968464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193968461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9906c82eaf162324abd182ea57b5008d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 1176040424}
-  inputFieldPlayerName: {fileID: 50082592}
-  playerNameMatched: {fileID: 519031760}
---- !u!114 &1193968465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193968461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a51099584258b44583e66af7aa9f84b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentCharacterType: 0
-  characterList: {fileID: 1368560853}
-  prefCharacterCard: {fileID: 4607226913724488102, guid: e1a33393b5f59be4ba040eecd6efd5d1, type: 3}
 --- !u!1 &1237864651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +1951,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!1 &1728026001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728026002}
+  - component: {fileID: 1728026003}
+  - component: {fileID: 1728026005}
+  - component: {fileID: 1728026004}
+  m_Layer: 0
+  m_Name: StartScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1728026002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728026001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 495.02325, y: 380.57257, z: -0.4287243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1728026003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728026001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b521be72aac39a244af6603ad4c20359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1176040423}
+  characterPreview: {fileID: 351502912}
+--- !u!114 &1728026004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728026001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a51099584258b44583e66af7aa9f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentCharacterType: 0
+  characterList: {fileID: 1368560853}
+  prefCharacterCard: {fileID: 4607226913724488102, guid: e1a33393b5f59be4ba040eecd6efd5d1, type: 3}
+--- !u!114 &1728026005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728026001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9906c82eaf162324abd182ea57b5008d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1176040424}
+  inputFieldPlayerName: {fileID: 50082592}
+  playerNameMatched: {fileID: 519031760}
 --- !u!1 &1772512511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,5 +2243,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 976244357}
+  - {fileID: 1728026002}
   - {fileID: 812363966}
   - {fileID: 1237864654}

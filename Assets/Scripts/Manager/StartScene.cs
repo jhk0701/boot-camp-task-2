@@ -3,11 +3,8 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerNameEditor))]
 [RequireComponent(typeof(PlayerCharacterSelector))]
-public class PageStartScene : MonoBehaviour, IPage
+public class StartScene : MonoBehaviour
 {
-    public static int Hash { get; private set; }
-    public string PageName { get; } = "StartScene";
-    
     PlayerNameEditor PlayerName;
     PlayerCharacterSelector PlayerCharacter;
 
@@ -18,8 +15,6 @@ public class PageStartScene : MonoBehaviour, IPage
 
     void Awake()
     {
-        Hash = PageName.GetHashCode();
-        
         PlayerName = GetComponent<PlayerNameEditor>();
         PlayerCharacter = GetComponent<PlayerCharacterSelector>();
     }

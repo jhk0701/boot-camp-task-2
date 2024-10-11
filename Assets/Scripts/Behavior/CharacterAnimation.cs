@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
+public class CharacterAnimation : MonoBehaviour
 {
     private readonly int isMove = Animator.StringToHash("isMove");
 
