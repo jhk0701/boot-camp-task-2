@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Unity.Mathematics;
 
 public class NonPlayer : Character
 {
@@ -7,6 +8,9 @@ public class NonPlayer : Character
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI txtName;
+
+    [Header("Dialogue")]
+    [SerializeField] DialogueTree dialogue;
 
     void Start()
     {
@@ -16,5 +20,6 @@ public class NonPlayer : Character
         // 과제 내용에 따른 추가
         MainManager.Instance.PlayerManager.players.Add(this);    
     }
+
 
 }
