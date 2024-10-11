@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Player prefPlayer;
     
     public Player Player { get; private set; }
-    public List<Player> players = new List<Player>();
+    public List<Character> players = new List<Character>();
 
     public void Initialize()
     {

@@ -5,9 +5,9 @@ public class CharacterAnimation : MonoBehaviour
     private readonly int isMove = Animator.StringToHash("isMove");
 
     private InputController controller;
-    // private Player player;
 
     [SerializeField] private Animator anim;
+    // private Player player;
 
 
     void Awake()
@@ -17,7 +17,7 @@ public class CharacterAnimation : MonoBehaviour
         controller.OnMoveEvent += Move;
         
         // 추가적인 사용이 있을 것이라면 필드로 분리할 것
-        GetComponent<Player>().onCharacterChanged += ChangeAnimator;
+        GetComponent<Player>().OnCharacterChangedEvent += ChangeAnimator;
     }
     
     void Move(Vector2 dir)

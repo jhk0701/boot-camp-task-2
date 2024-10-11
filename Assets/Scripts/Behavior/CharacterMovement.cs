@@ -17,7 +17,8 @@ public class CharacterMovement : MonoBehaviour
 
         controller.OnMoveEvent += Move;
         controller.OnLookEvent += Look;
-        player.onCharacterChanged += ChangeSprite;
+        
+        player.OnCharacterChangedEvent += ChangeSprite;
     }
 
 

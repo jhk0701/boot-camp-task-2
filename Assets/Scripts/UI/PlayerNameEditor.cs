@@ -20,7 +20,7 @@ public class PlayerNameEditor : MonoBehaviour, IPopUpable
         if(MainManager.Instance.PlayerManager.Player == null)
             inputFieldPlayerName.text = Name = "";
         else
-            inputFieldPlayerName.text = Name = MainManager.Instance.PlayerManager.Player.PlayerName;
+            inputFieldPlayerName.text = Name = MainManager.Instance.PlayerManager.Player.Name;
     }
 
     public void Close()
@@ -31,6 +31,7 @@ public class PlayerNameEditor : MonoBehaviour, IPopUpable
         MainManager.Instance.PlayerManager.Player.UpdateName(Name);
         panel.gameObject.SetActive(false);
     }
+
 
     public void OnPlayerNameChanged(string name)
     {

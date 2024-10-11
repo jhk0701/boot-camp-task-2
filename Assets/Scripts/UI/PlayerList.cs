@@ -35,7 +35,7 @@ public class PlayerList : MonoBehaviour, IPopUpable
             // 도중에 사라지는 상황에 대한 처리
             if(player == null) continue;
 
-            txtInsts[i].text = player.PlayerName;
+            txtInsts[i].text = player.Name;
             txtInsts[i].gameObject.SetActive(true);
 
             i++;
