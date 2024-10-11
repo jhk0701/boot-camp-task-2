@@ -2012,6 +2012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCharacterType: 0
+  panel: {fileID: 1176040423}
   characterList: {fileID: 1368560853}
   prefCharacterCard: {fileID: 4607226913724488102, guid: e1a33393b5f59be4ba040eecd6efd5d1, type: 3}
 --- !u!114 &1728026005
@@ -2026,9 +2027,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9906c82eaf162324abd182ea57b5008d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  badWordFilter: {fileID: 11400000, guid: f0def8bef778c46418294633aa48a44c, type: 2}
   panel: {fileID: 1176040424}
   inputFieldPlayerName: {fileID: 50082592}
   playerNameMatched: {fileID: 519031760}
+  txtNameMatched: {fileID: 442213080}
 --- !u!1 &1772512511
 GameObject:
   m_ObjectHideFlags: 0

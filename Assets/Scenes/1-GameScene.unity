@@ -3828,9 +3828,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9906c82eaf162324abd182ea57b5008d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  badWordFilter: {fileID: 11400000, guid: f0def8bef778c46418294633aa48a44c, type: 2}
   panel: {fileID: 462574701}
   inputFieldPlayerName: {fileID: 1893615252}
   playerNameMatched: {fileID: 1555210218}
+  txtNameMatched: {fileID: 1003344025}
 --- !u!1 &217995551
 GameObject:
   m_ObjectHideFlags: 0

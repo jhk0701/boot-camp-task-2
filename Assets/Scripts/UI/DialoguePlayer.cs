@@ -18,7 +18,6 @@ public class DialoguePlayer : MonoBehaviour, IPopUpable
     [SerializeField] CanvasGroup buttonGroup;
 
     WaitForSeconds waitForDotSecond;
-    WaitForSeconds waitForASecond;
     
     Coroutine dialogueHandler;
     Coroutine buttonAnimHandler;
@@ -28,7 +27,6 @@ public class DialoguePlayer : MonoBehaviour, IPopUpable
     void Start()
     {
         waitForDotSecond = new WaitForSeconds(0.05f);
-        waitForASecond = new WaitForSeconds(1f);
     }
 
     public void PopUp()
@@ -89,8 +87,6 @@ public class DialoguePlayer : MonoBehaviour, IPopUpable
             txtContent.text += node.content[i];
             yield return waitForDotSecond;
         }
-
-        yield return waitForASecond;
 
         SetUpButtons();
     }
