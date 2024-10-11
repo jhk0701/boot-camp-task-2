@@ -30,7 +30,7 @@ public class PlayerList : MonoBehaviour, IPopUpable
         txtTitle.text = $"Task 02 ({ MainManager.Instance.PlayerManager.players.Count }/{ PlayerManager.MAX_PLAYER_COUNT })";
 
         int i = 0;
-        foreach (Player player in MainManager.Instance.PlayerManager.players)
+        foreach (Character player in MainManager.Instance.PlayerManager.players)
         {
             // 도중에 사라지는 상황에 대한 처리
             if(player == null) continue;

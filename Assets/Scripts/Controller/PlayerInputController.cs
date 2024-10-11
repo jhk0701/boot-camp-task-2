@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : InputController
 {
-    [SerializeField] bool isInteracting = false;
+    bool isInteractPressed = false;
 
     public void OnMove(InputValue value)
     {
@@ -25,7 +25,7 @@ public class PlayerInputController : InputController
     {
         if(IsInvoking("SetInteractable")) return;
 
-        isInteracting = value.isPressed;
+        isInteractPressed = value.isPressed;
         Invoke("SetInteractable", 1f);
 
         CallInteractEvent();
@@ -33,6 +33,6 @@ public class PlayerInputController : InputController
 
     void SetInteractable()
     {
-        isInteracting = false;
+        isInteractPressed = false;
     }
 }

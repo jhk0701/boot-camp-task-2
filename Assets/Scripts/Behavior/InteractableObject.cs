@@ -1,24 +1,24 @@
+using System;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {    
-    public bool HasNearbyPlayer { get { return nearPlayer != null;}}
-    [SerializeField] protected Player nearPlayer;
+    public Player NearbyPlayer { get; protected set;}
+    public bool HasNearbyPlayer { get { return NearbyPlayer != null;}}
+
     [SerializeField] protected GameObject panelInteractionGuide;
 
-    protected virtual void Interact()
-    {
-        Debug.Log("Interact!");
-    }
-    
+    public event Action Interact;
+    public event Action OnEndInteract;
+
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.tag.Equals("Player"))
         {
             panelInteractionGuide.SetActive(true);
-            
-            nearPlayer = collider.gameObject.GetComponent<Player>();
-            nearPlayer.GetComponent<InputController>().SetInteract(Interact);
+
+            NearbyPlayer = collider.gameObject.GetComponent<Player>();
+            NearbyPlayer.GetComponent<InputController>().SetInteract(Interact);
         }
     }
 
@@ -28,8 +28,10 @@ public class InteractableObject : MonoBehaviour
         {
             panelInteractionGuide.SetActive(false);
 
-            nearPlayer.GetComponent<InputController>().ClearInteract();
-            nearPlayer = null;
+            NearbyPlayer.GetComponent<InputController>().ClearInteract();
+            NearbyPlayer = null;
+
+            OnEndInteract?.Invoke();
         }
     }
 }
