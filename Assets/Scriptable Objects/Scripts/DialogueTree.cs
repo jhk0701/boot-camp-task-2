@@ -7,6 +7,8 @@ public class DialogueNode
     public string name;
     public int participantId;
     [TextArea] public string content;
+
+    // TODO : 시각화 가능한 에디터가 있으면 무한하게 작성 가능
     public DialogueNode[] response;
 }
 

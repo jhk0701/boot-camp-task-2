@@ -8,7 +8,8 @@ public class NpcDialogue : MonoBehaviour
     InteractableObject interaction;
     
     [SerializeField] DialogueTree dialogue;
-    [SerializeField] DialoguePlayer dialoguePlayer; // 강한 결합
+    [SerializeField] DialoguePlayer dialoguePlayer;
+    bool isDialoguePlaying = false;
 
     void Awake()
     {
@@ -24,9 +25,11 @@ public class NpcDialogue : MonoBehaviour
 
     void ShowDialogue()
     {
+        if (isDialoguePlaying) return;
         if (dialoguePlayer == null) return;
-
         
+        isDialoguePlaying = true;
+
         dialogue.InitializeDialogue(npc.Name, interaction.NearbyPlayer.Name);
         dialoguePlayer.Play(dialogue);
     }
@@ -34,5 +37,7 @@ public class NpcDialogue : MonoBehaviour
     void CloseDialogue()
     {
         dialoguePlayer.Close();
+
+        isDialoguePlaying = false;
     }
 }

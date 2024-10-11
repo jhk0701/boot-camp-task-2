@@ -17,11 +17,19 @@ public class DialoguePlayer : MonoBehaviour, IPopUpable
     [SerializeField] TMP_Text txtContent;
     [SerializeField] CanvasGroup buttonGroup;
 
-    WaitForSeconds waitForDotSecond = new WaitForSeconds(0.05f);
-    WaitForSeconds waitForASecond = new WaitForSeconds(1f);
+    WaitForSeconds waitForDotSecond;
+    WaitForSeconds waitForASecond;
     
     Coroutine dialogueHandler;
     Coroutine buttonAnimHandler;
+
+    [SerializeField] AnimationCurve buttonAnimCurve;
+
+    void Start()
+    {
+        waitForDotSecond = new WaitForSeconds(0.05f);
+        waitForASecond = new WaitForSeconds(1f);
+    }
 
     public void PopUp()
     {
@@ -142,10 +150,11 @@ public class DialoguePlayer : MonoBehaviour, IPopUpable
         buttonGroup.interactable = !isOn;
 
         float progress = 0f;
-        float delta = .1f;
+        float delta = .05f;
         while (progress <= 1f)
         {
-            buttonGroup.alpha += isOn ? delta : -delta;
+            float val = buttonAnimCurve.Evaluate(progress);
+            buttonGroup.alpha += isOn ?  val : -val;
 
             yield return waitForDotSecond;
 

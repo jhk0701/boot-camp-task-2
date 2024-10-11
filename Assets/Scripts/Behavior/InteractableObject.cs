@@ -11,6 +11,12 @@ public class InteractableObject : MonoBehaviour
     public event Action Interact;
     public event Action OnEndInteract;
 
+    void Start()
+    {
+        Interact += () => { panelInteractionGuide.SetActive(false); };
+    }
+
+
     protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.tag.Equals("Player"))
