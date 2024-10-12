@@ -142,7 +142,7 @@ public class DialoguePlayer : MonoBehaviour, IPopUpable
     IEnumerator OnOffButtons(bool isOn)
     {
         buttonGroup.alpha = isOn ? 0f : 1f;
-        buttonGroup.interactable = !isOn;
+        buttonGroup.interactable = false;
 
         float progress = 0f;
         float delta = .05f;
