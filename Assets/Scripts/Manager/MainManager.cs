@@ -11,10 +11,6 @@ public class MainManager : MonoBehaviour
     public PlayerManager PlayerManager { get; private set;}
     public SceneLoader SceneLoader { get; private set; }
     public CharacterSelection CharacterSelection { get; private set; }
-    
-    // 각 페이지에 대한 매핑
-    // 이름 - 해당 맵
-    public Dictionary<int, IPage> pages = new Dictionary<int, IPage>();
 
 
     void Awake()

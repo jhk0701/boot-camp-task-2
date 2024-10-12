@@ -24,7 +24,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Move(Vector2 dir)
     {
-        rb.velocity = dir * player.speed * Time.deltaTime * 100f;
+        rb.velocity = dir * player.speed;
     }
 
     void Look(Vector2 dir)

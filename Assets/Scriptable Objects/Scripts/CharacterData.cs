@@ -3,14 +3,16 @@ using UnityEngine;
 public enum CharacterType 
 {
     Penguin,
-    OldMan,
+    Boy1,
+    Boy2,
+    Girl1,
+    Girl2,
 }
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "TaskProject/CharacterData")]
 public class CharacterData : ScriptableObject
 {
     public CharacterType type;
-    public float speed;
     public GameObject prefab;
     public Sprite sprite;
 }

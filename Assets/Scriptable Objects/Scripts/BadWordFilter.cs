@@ -8,6 +8,8 @@ using System;
 [CreateAssetMenu(fileName ="BadWordFilter", menuName = "TaskProject/BadWordFilter")]
 public class BadWordFilter : ScriptableObject
 {    
+    bool isInitialized = false;
+    readonly string path = Application.dataPath + "/StreamingAssets/Miscellaneous/BadWord.txt";
 
     /// 탐색용 맵핑. 탐색 한정 O(1)
     public Dictionary<string, string> BadWords;
@@ -15,10 +17,12 @@ public class BadWordFilter : ScriptableObject
     [ContextMenu("ReadFile")]
     public void Initialize()
     {
-        string path = Application.dataPath + "/Resources/Miscellaneous/BadWord.txt";
-        
         if (!File.Exists(path))
+        {
+            Debug.LogError($"[Error] 필터 파일을 찾을 수 없습니다.\n{path}");
+            isInitialized = false;
             return;
+        }
 
         BadWords = new Dictionary<string, string>();
         List<string> wordList = File.ReadLines(path).ToList();
@@ -30,6 +34,8 @@ public class BadWordFilter : ScriptableObject
             if (!BadWords.ContainsKey(clean))
                 BadWords.Add(clean, new string('*', clean.Length));
         }
+
+        isInitialized = true;
     }
 
     [ContextMenu("DebugCheck")]
@@ -39,14 +45,20 @@ public class BadWordFilter : ScriptableObject
             Initialize();
         
         // Debug.Log(BadWords.Count);
-        // Debug.Log(FilterString("씨바"));
-        // Debug.Log(FilterString("개새끼"));
-        // Debug.Log(FilterString("좆같은"));
+        // Debug.Log(FilterString("씨바")); // **
+        // Debug.Log(FilterString("개새끼")); // ***
+        // Debug.Log(FilterString("좆같은")); // *같은
     }
 
     // 테스트케이스는 2~10자로 제한된 환경
     public string FilterString(string testCase)
     {
+        if(!isInitialized)
+        {
+            Debug.LogError("[Error] 필터가 초기화되지 않았습니다. 초기화 후 다시 시도해주세요.");
+            return testCase;
+        }
+
         string converted = "";
         testCase = testCase.TrimEnd();   
         for(int i = 0; i < testCase.Length; i++)
@@ -70,6 +82,12 @@ public class BadWordFilter : ScriptableObject
     
     public bool IsVaild(string testCase)
     {
+        if(!isInitialized)
+        {
+            Debug.LogError("[Error] 필터가 초기화되지 않았습니다. 초기화 후 다시 시도해주세요.");
+            return true;
+        }
+
         testCase = testCase.TrimEnd();   
         for(int i = 0; i < testCase.Length; i++)
         {
