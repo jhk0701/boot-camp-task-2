@@ -17,20 +17,24 @@ public class BadWordFilter : ScriptableObject
     [ContextMenu("ReadFile")]
     public void Initialize()
     {
-        if (!File.Exists(path))
+        BadWords = new Dictionary<string, string>();
+        List<string> wordList = new List<string>();
+
+        try
         {
-            Debug.LogError($"[Error] 필터 파일을 찾을 수 없습니다.\n{path}");
+            wordList = File.ReadLines(path).ToList();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
             isInitialized = false;
             return;
         }
-
-        BadWords = new Dictionary<string, string>();
-        List<string> wordList = File.ReadLines(path).ToList();
-        // Debug.Log(wordList.Count);
+        
         for (int i = 0; i < wordList.Count; i++)
         {
-            // Debug.Log($"{i + 1}. {wordList[i]}");
             string clean = wordList[i].TrimEnd();
+
             if (!BadWords.ContainsKey(clean))
                 BadWords.Add(clean, new string('*', clean.Length));
         }
